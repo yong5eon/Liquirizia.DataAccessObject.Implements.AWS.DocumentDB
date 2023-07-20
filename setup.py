@@ -33,7 +33,7 @@ setup(
 		'Application Framework :: Liquirizia :: DataAccessObject :: AWS :: DocumentDB',
 	],
 	install_requires=[
-		'Liquirizia@git+https://github.com/team-of-mine-labs/Liquirizia.git',
+		'Liquirizia@git+https://github.com/yong5eon/Liquirizia.git',
 		'pymongo>=4.0.1',
 	],
 	python_requires='>=3.8'
