@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
-from ..DataAccessObjectFilterCondition import DataAccessObjectFilterCondition
+from ..Condition import Condition
 
 __all__ = (
-	'DataAccessObjectFilterGreaterThan'
+	'GreaterThan'
 )
 
 
-class DataAccessObjectFilterGreaterThan(DataAccessObjectFilterCondition):
+class GreaterThan(Condition):
 	"""
 	Data Access Object Filter Greater Than Class for DocumentDB of AWS
 	"""

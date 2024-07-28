@@ -1,25 +1,18 @@
 # -*- coding: utf-8 -*-
 
-from Liquirizia.DataAccessObject import DataAccessObjectHelper
+from Liquirizia.DataAccessObject import Helper
 
-from Liquirizia.DataAccessObject.Implements.AWS.DocumentDB import DataAccessObject, DataAccessObjectConfiguration
-from Liquirizia.DataAccessObject.Implements.AWS.DocumentDB import DataAccessObjectIndexes, DataAccessObjectIndex, DataAccessObjectIndexKey
-from Liquirizia.DataAccessObject.Implements.AWS.DocumentDB import DataAccessObjectSort, DataAccessObjectSortKey, DataAccessObjectFilter
-from Liquirizia.DataAccessObject.Implements.AWS.DocumentDB.Filters import (
-	DataAccessObjectFilterGreaterThan,
-	DataAccessObjectFilterLessThan,
-	DataAccessObjectFilterIn,
-	DataAccessObjectFilterNotIn,
-	DataAccessObjectFilterEqual,
-	DataAccessObjectFilterNotEqual,
-)
+from Liquirizia.DataAccessObject.Implements.AWS.DocumentDB import Connection, Configuration
+from Liquirizia.DataAccessObject.Implements.AWS.DocumentDB import Indexes, Index, IndexKey
+from Liquirizia.DataAccessObject.Implements.AWS.DocumentDB import Sort, SortKey, Filter
+from Liquirizia.DataAccessObject.Implements.AWS.DocumentDB.Filters import * 
 
 if __name__ == '__main__':
 	# Set connection
-	DataAccessObjectHelper.Set(
+	Helper.Set(
 		'Sample',
-		DataAccessObject,
-		DataAccessObjectConfiguration(
+		Connection,
+		Configuration(
 			host='HOST_ADDRESS',
 			port=27017,
 			username='USER_NAME',
@@ -31,7 +24,7 @@ if __name__ == '__main__':
 	)
 
 	# Get connection
-	con = DataAccessObjectHelper.Get('Sample')
+	con = Helper.Get('Sample')
 
 	# con.delete('Sample')
 	# time.sleep(3)
@@ -40,10 +33,10 @@ if __name__ == '__main__':
 	con.delete('Sample')
 	con.create(
 		'Sample',
-		DataAccessObjectIndexes([
-			DataAccessObjectIndex(DataAccessObjectIndexKey('ID', DataAccessObjectIndexKey.ASCENDING), unique=True),
-			DataAccessObjectIndex(DataAccessObjectIndexKey('Name', DataAccessObjectIndexKey.ASCENDING), unique=True),
-			# DataAccessObjectIndex(DataAccessObjectIndexKey('CountryCode', DataAccessObjectIndexKey.TEXT)),
+		Indexes([
+			Index(IndexKey('ID', IndexKey.ASCENDING), unique=True),
+			Index(IndexKey('Name', IndexKey.ASCENDING), unique=True),
+			# Index(IndexKey('CountryCode', IndexKey.TEXT)),
 		])
 	)
 
@@ -93,43 +86,43 @@ if __name__ == '__main__':
 
 	docs = con.query(
 		'Sample',
-		filter=DataAccessObjectFilter((
-			DataAccessObjectFilterEqual('CountryCode', 'KR'),
-			DataAccessObjectFilterNotEqual('Title', 'CTO'),
+		filter=Filter((
+			Equal('CountryCode', 'KR'),
+			NotEqual('Title', 'CTO'),
 		)),
-		sort=DataAccessObjectSort(DataAccessObjectSortKey('Name', DataAccessObjectSortKey.ASCENDING)),
+		sort=Sort(SortKey('Name', SortKey.ASCENDING)),
 		limit=3
 	)
 	print(docs)
 
 	docs = con.query(
 		'Sample',
-		filter=DataAccessObjectFilter((
-			DataAccessObjectFilterGreaterThan('ID', 1),
-			DataAccessObjectFilterLessThan('ID', 4),
+		filter=Filter((
+			GreaterThan('ID', 1),
+			LessThan('ID', 4),
 		)),
-		sort=DataAccessObjectSort(DataAccessObjectSortKey('Name', DataAccessObjectSortKey.ASCENDING)),
+		sort=Sort(SortKey('Name', SortKey.ASCENDING)),
 		limit=2
 	)
 	print(docs)
 
 	docs = con.query(
 		'Sample',
-		filter=DataAccessObjectFilter((
-			DataAccessObjectFilterIn('ID', 1),
+		filter=Filter((
+			In('ID', 1),
 		)),
-		sort=DataAccessObjectSort(DataAccessObjectSortKey('Name', DataAccessObjectSortKey.ASCENDING)),
+		sort=Sort(SortKey('Name', SortKey.ASCENDING)),
 		limit=3
 	)
 	print(docs)
 
 	docs = con.query(
 		'Sample',
-		filter=DataAccessObjectFilter((
-			DataAccessObjectFilterIn('ID', (1, 2, 3)),
-			DataAccessObjectFilterNotIn('ID', 1),
+		filter=Filter((
+			In('ID', (1, 2, 3)),
+			NotIn('ID', 1),
 		)),
-		sort=DataAccessObjectSort(DataAccessObjectSortKey('Name', DataAccessObjectSortKey.ASCENDING)),
+		sort=Sort(SortKey('Name', SortKey.ASCENDING)),
 		limit=3
 	)
 	print(docs)

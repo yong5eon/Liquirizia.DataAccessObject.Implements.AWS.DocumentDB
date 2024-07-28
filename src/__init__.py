@@ -1,23 +1,23 @@
 # -*- coding: utf-8 -*-
 
-from .DataAccessObjectConfiguration import DataAccessObjectConfiguration
-from .DataAccessObject import DataAccessObject
-from .DataAccessObjectIndex import DataAccessObjectIndex
-from .DataAccessObjectIndexKey import DataAccessObjectIndexKey
-from .DataAccessObjectIndexes import DataAccessObjectIndexes
-from .DataAccessObjectSort import DataAccessObjectSort
-from .DataAccessObjectSortKey import DataAccessObjectSortKey
-from .DataAccessObjectFilter import DataAccessObjectFilter
-from .DataAccessObjectFilterCondition import DataAccessObjectFilterCondition
+from .Configuration import Configuration
+from .Connection import Connection
+from .Index import Index
+from .IndexKey import IndexKey
+from .Indexes import Indexes
+from .Sort import Sort
+from .SortKey import SortKey
+from .Filter import Filter
+from .Condition import Condition
 
 __all__ = (
-	'DataAccessObjectConfiguration',
-	'DataAccessObject',
-	'DataAccessObjectIndex',
-	'DataAccessObjectIndexKey',
-	'DataAccessObjectIndexes',
-	'DataAccessObjectSort',
-	'DataAccessObjectSortKey',
-	'DataAccessObjectFilter',
-	'DataAccessObjectFilterCondition',
+	'Configuration',
+	'Connection',
+	'Index',
+	'IndexKey',
+	'Indexes',
+	'Sort',
+	'SortKey',
+	'Filter',
+	'Condition',
 )

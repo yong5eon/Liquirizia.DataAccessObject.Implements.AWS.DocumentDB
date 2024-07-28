@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
-from ..DataAccessObjectFilterCondition import DataAccessObjectFilterCondition
+from ..Condition import Condition
 
 __all__ = (
-	'DataAccessObjectFilterNot'
+	'Not'
 )
 
 
-class DataAccessObjectFilterNot(DataAccessObjectFilterCondition):
+class Not(Condition):
 	"""
 	Data Access Object Filter Not Class for DocumentDB of AWS
 	"""

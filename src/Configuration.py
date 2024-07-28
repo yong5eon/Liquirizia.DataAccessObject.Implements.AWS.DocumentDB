@@ -1,16 +1,14 @@
 # -*- coding: utf-8 -*-
 
-from Liquirizia.DataAccessObject import DataAccessObjectConfiguration as DataAccessObjectConfigurationBase
+from Liquirizia.DataAccessObject import Configuration as BaseConfiguration
 
 __all__ = (
-	'DataAccessObjectConfiguration'
+	'Configuration'
 )
 
 
-class DataAccessObjectConfiguration(DataAccessObjectConfigurationBase):
-	"""
-	Data Access Object Configuration Class for DocumentDB of AWS
-	"""
+class Configuration(BaseConfiguration):
+	"""Configuration Class for AWS DocumentDB"""
 
 	def __init__(
 		self,

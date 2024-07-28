@@ -3,11 +3,11 @@
 from datetime import datetime, date
 
 __all__ = (
-	'DataAccessObjectFormatDecoder'
+	'Decoder'
 )
 
 
-class DataAccessObjectFormatDecoder(object):
+class Decoder(object):
 	def __call__(self, o):
 		if isinstance(o, str):
 			try:

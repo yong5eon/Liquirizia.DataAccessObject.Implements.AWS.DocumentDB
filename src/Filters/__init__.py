@@ -1,41 +1,41 @@
 # -*- coding: utf-8 -*-
 
-from .DataAccessObjectFilterEqual import DataAccessObjectFilterEqual
-from .DataAccessObjectFilterNotEqual import DataAccessObjectFilterNotEqual
-from .DataAccessObjectFilterIn import DataAccessObjectFilterIn
-from .DataAccessObjectFilterNotIn import DataAccessObjectFilterNotIn
-from .DataAccessObjectFilterGreaterThan import DataAccessObjectFilterGreaterThan
-from .DataAccessObjectFilterGreaterThanEqual import DataAccessObjectFilterGreaterThanEqual
-from .DataAccessObjectFilterLessThan import DataAccessObjectFilterLessThan
-from .DataAccessObjectFilterLessThanEqual import DataAccessObjectFilterLessThanEqual
-from .DataAccessObjectFilterText import DataAccessObjectFilterText
-from .DataAccessObjectFilterRegex import DataAccessObjectFilterRegex
-from .DataAccessObjectFilterExists import DataAccessObjectFilterExists
-from .DataAccessObjectFilterSize import DataAccessObjectFilterSize
-from .DataAccessObjectFilterAll import DataAccessObjectFilterAll
-from .DataAccessObjectFilterMod import DataAccessObjectFilterMod
-from .DataAccessObjectFilterNot import DataAccessObjectFilterNot
-from .DataAccessObjectFilterAnd import DataAccessObjectFilterAnd
-from .DataAccessObjectFilterOr import DataAccessObjectFilterOr
-from .DataAccessObjectFilterNor import DataAccessObjectFilterNor
+from .Equal import Equal
+from .NotEqual import NotEqual
+from .In import In
+from .NotIn import NotIn
+from .GreaterThan import GreaterThan
+from .GreaterThanEqual import GreaterThanEqual
+from .LessThan import LessThan
+from .LessThanEqual import LessThanEqual
+from .Text import Text
+from .Regex import Regex
+from .Exists import Exists
+from .Size import Size
+from .All import All
+from .Mod import Mod
+from .Not import Not
+from .And import And
+from .Or import Or
+from .Nor import Nor
 
 __all__ = (
-	'DataAccessObjectFilterEqual',
-	'DataAccessObjectFilterNotEqual',
-	'DataAccessObjectFilterIn',
-	'DataAccessObjectFilterNotIn',
-	'DataAccessObjectFilterGreaterThan',
-	'DataAccessObjectFilterGreaterThanEqual',
-	'DataAccessObjectFilterLessThan',
-	'DataAccessObjectFilterLessThanEqual',
-	'DataAccessObjectFilterText',
-	'DataAccessObjectFilterRegex',
-	'DataAccessObjectFilterExists',
-	'DataAccessObjectFilterSize',
-	'DataAccessObjectFilterAll',
-	'DataAccessObjectFilterMod',
-	'DataAccessObjectFilterNot',
-	'DataAccessObjectFilterAnd',
-	'DataAccessObjectFilterOr',
-	'DataAccessObjectFilterNor',
+	'Equal',
+	'NotEqual',
+	'In',
+	'NotIn',
+	'GreaterThan',
+	'GreaterThanEqual',
+	'LessThan',
+	'LessThanEqual',
+	'Text',
+	'Regex',
+	'Exists',
+	'Size',
+	'All',
+	'Mod',
+	'Not',
+	'And',
+	'Or',
+	'Nor',
 )

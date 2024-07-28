@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
-from ..DataAccessObjectFilterCondition import DataAccessObjectFilterCondition
+from ..Condition import Condition
 
 __all__ = (
-	'DataAccessObjectFilterMod'
+	'Mod'
 )
 
 
-class DataAccessObjectFilterMod(DataAccessObjectFilterCondition):
+class Mod(Condition):
 	"""
 	Data Access Object Filter Modulo Class for DocumentDB of AWS
 	"""

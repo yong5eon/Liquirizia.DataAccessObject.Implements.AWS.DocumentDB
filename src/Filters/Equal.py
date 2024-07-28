@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
-from ..DataAccessObjectFilterCondition import DataAccessObjectFilterCondition
+from ..Condition import Condition
 
 __all__ = (
-	'DataAccessObjectFilterEqual'
+	'Equal'
 )
 
 
-class DataAccessObjectFilterEqual(DataAccessObjectFilterCondition):
+class Equal(Condition):
 	"""
 	Data Access Object Filter Equal Class for DocumentDB of AWS
 	"""

@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
 
-from Liquirizia.DataAccessObject import DataAccessObject as DataAccessObjectBase
+from Liquirizia.DataAccessObject import Connection as BaseConnection
 from Liquirizia.DataAccessObject.Properties.Document import Document
 
-from Liquirizia.DataAccessObject import DataAccessObjectError
+from Liquirizia.DataAccessObject import Error
 from Liquirizia.DataAccessObject.Errors import *
 
-from .DataAccessObjectConfiguration import DataAccessObjectConfiguration
-from .DataAccessObjectIndexes import DataAccessObjectIndexes
-from .DataAccessObjectSort import DataAccessObjectSort
-from .DataAccessObjectFilter import DataAccessObjectFilter
+from .Configuration import Configuration
+from .Indexes import Indexes
+from .Sort import Sort
+from .Filter import Filter
 
-from .DataAccessObjectFormatEncoder import DataAccessObjectFormatEncoder
-from .DataAccessObjectFormatDecoder import DataAccessObjectFormatDecoder
+from .Encoder import Encoder
+from .Decoder import Decoder
 
 from Liquirizia.Util.Dictionary import Replace
 
@@ -25,19 +25,18 @@ from bson.objectid import ObjectId
 from hashlib import shake_256
 
 __all__ = (
-	'DataAccessObject'
+	'Connection'
 )
 
 
-class DataAccessObject(DataAccessObjectBase, Document):
+class Connection(BaseConnection, Document):
+	"""Connection Class for AWS DocumentDB"""
 	"""
-	Data Access Object Class for DocumentDB of AWS
-
 	TODO :
 		* Exception Handling with DataAccessObjectError
 	"""
 
-	def __init__(self, conf: DataAccessObjectConfiguration, decoder=DataAccessObjectFormatDecoder(), encoder=DataAccessObjectFormatEncoder()):
+	def __init__(self, conf: Configuration, decoder=Decoder(), encoder=Encoder()):
 		self.conf = conf
 		self.connection = None
 		self.database = None
@@ -70,7 +69,7 @@ class DataAccessObject(DataAccessObjectBase, Document):
 			)
 			self.database = Database(self.connection, self.conf.database)
 		except ConnectionFailure as e:
-			raise DataAccessObjectConnectionError(error=e)
+			raise ConnectionError(error=e)
 		return
 
 	def close(self):
@@ -80,10 +79,10 @@ class DataAccessObject(DataAccessObjectBase, Document):
 			self.database = None
 		return
 
-	def create(self, key: str, indexes: DataAccessObjectIndexes = None):
+	def create(self, key: str, indexes: Indexes = None):
 		keys = self.database.list_collection_names()
 		if key in keys:
-			raise DataAccessObjectError('{} is exists'.format(key))
+			raise Error('{} is exists'.format(key))
 		document = Collection(self.database, key)
 		for index in indexes if indexes else []:
 			keys = []
@@ -118,7 +117,7 @@ class DataAccessObject(DataAccessObjectBase, Document):
 		document = Collection(self.database, key)
 		return document.delete_one({'_id': self.__id__(id)})
 	
-	def query(self, key, filter: DataAccessObjectFilter = None, sort: DataAccessObjectSort = None, limit=None, pos=None, projection: tuple[str] = None, timeout=None):
+	def query(self, key, filter: Filter = None, sort: Sort = None, limit=None, pos=None, projection: tuple[str] = None, timeout=None):
 		document = Collection(self.database, key)
 		s = []
 		for key in sort.keys if sort else []:
@@ -147,6 +146,6 @@ class DataAccessObject(DataAccessObjectBase, Document):
 		document = Collection(self.database, key)
 		return document.count_documents({})
 	
-	def count(self, key, filter: DataAccessObjectFilter = None):
+	def count(self, key, filter: Filter = None):
 		document = Collection(self.database, key)
 		return document.count_documents(filter() if filter else {})

@@ -1,28 +1,27 @@
 # -*- coding: utf-8 -*-
 
-from .DataAccessObjectIndexKey import DataAccessObjectIndexKey
+from .IndexKey import IndexKey
 
 __all__ = (
-	'DataAccessObjectIndex'
+	'Index'
 )
 
 
-class DataAccessObjectIndex(object):
-	"""
-	Data Access Object Index Class for DocumentDB of AWS
-	"""
+class Index(object):
+	"""Index Class for AWS DocumentDB"""
+
 	def __init__(self, keys=None, unique=False, sparse=False, background=True, expires=None):
-		super(DataAccessObjectIndex, self).__init__()
+		super(Index, self).__init__()
 		if keys is None:
 			keys = []
-		if isinstance(keys, DataAccessObjectIndexKey):
+		if isinstance(keys, IndexKey):
 			keys = [keys]
 		if not isinstance(keys, (list, tuple)):
 			raise RuntimeError('{} is not iterable'.format(keys.__class__.__name__))
 		self.keys = list()
 		for key in keys:
-			if not isinstance(key, DataAccessObjectIndexKey):
-				raise RuntimeError('{} must be DataAccessObjectIndexKey or list of DataAccessObjectIndexKey'.format(key.__class__.__name__))
+			if not isinstance(key, IndexKey):
+				raise RuntimeError('{} must be IndexKey or list of IndexKey'.format(key.__class__.__name__))
 			self.keys.append(key)
 		self.properties = dict(
 			unique=unique,
@@ -33,7 +32,7 @@ class DataAccessObjectIndex(object):
 		return
 
 	def add(self, key, type):
-		self.keys.append(DataAccessObjectIndexKey(key, type))
+		self.keys.append(IndexKey(key, type))
 		return self
 
 	def clear(self):
