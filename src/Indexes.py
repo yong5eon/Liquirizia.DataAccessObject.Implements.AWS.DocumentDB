@@ -1,21 +1,19 @@
 # -*- coding: utf-8 -*-
 
-from .DataAccessObjectIndex import DataAccessObjectIndex
+from .Index import Index
 
-from collections import MutableSequence
+from collections.abc import MutableSequence
 
 __all__ = (
-	'DataAccessObjectIndex'
+	'Index'
 )
 
 
-class DataAccessObjectIndexes(MutableSequence):
-	"""
-	Data Access Object Index Class for DocumentDB of AWS
-	"""
+class Indexes(MutableSequence):
+	"""Indexes Class for AWS DocumentDB"""
 
 	def __init__(self, indexes=None, unique=None, sparse=None, background=None, expires=None):
-		super(DataAccessObjectIndexes, self).__init__()
+		super(Indexes, self).__init__()
 		self.indexes = indexes if indexes else []
 		self.properties = dict(
 			unique=unique,
@@ -47,7 +45,7 @@ class DataAccessObjectIndexes(MutableSequence):
 		self.indexes[index] = value
 		return self
 
-	def add(self, index: DataAccessObjectIndex):
+	def add(self, index: Index):
 		self.indexes.append(index)
 		return self
 

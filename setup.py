@@ -29,8 +29,8 @@ setup(
 		'Programming Language :: Python :: 3.9',
 		'Programming Language :: Python :: 3.10',
 		'Programming Language :: Python :: 3.11',
-		'Application Framework :: Liquirizia',
-		'Application Framework :: Liquirizia :: DataAccessObject :: AWS :: DocumentDB',
+		'Liquirizia',
+		'Liquirizia :: DataAccessObject :: AWS :: DocumentDB',
 	],
 	install_requires=[
 		'Liquirizia@git+https://github.com/yong5eon/Liquirizia.git',

@@ -1,22 +1,24 @@
 # -*- coding: utf-8 -*-
 
-from pymongo import ASCENDING, DESCENDING
+from pymongo import ASCENDING, DESCENDING, GEO2D, GEOSPHERE, HASHED, TEXT
 
 __all__ = (
-	'DataAccessObjectSortKey'
+	'IndexKey'
 )
 
 
-class DataAccessObjectSortKey(object):
-	"""
-	Data Access Object Sort Key Class for DocumentDB of AWS
-	"""
+class IndexKey(object):
+	"""Index Key Class for AWS DocumentDB"""
 
 	ASCENDING = ASCENDING
 	DESCENDING = DESCENDING
+	GEO2D = GEO2D
+	GEOSPHERE = GEOSPHERE
+	HASH = HASHED
+	TEXT = TEXT
 
 	def __init__(self, key=None, type=None):
-		super(DataAccessObjectSortKey, self).__init__()
+		super(IndexKey, self).__init__()
 		self.properties = dict(
 			key=key,
 			type=type,

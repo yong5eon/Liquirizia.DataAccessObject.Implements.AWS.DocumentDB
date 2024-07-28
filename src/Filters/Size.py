@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
-from ..DataAccessObjectFilterCondition import DataAccessObjectFilterCondition
+from ..Condition import Condition
 
 __all__ = (
-	'DataAccessObjectFilterSize'
+	'Size'
 )
 
 
-class DataAccessObjectFilterSize(DataAccessObjectFilterCondition):
+class Size(Condition):
 	"""
 	Data Access Object Filter Size Class for DocumentDB of AWS
 	"""

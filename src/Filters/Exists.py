@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
-from ..DataAccessObjectFilterCondition import DataAccessObjectFilterCondition
+from ..Condition import Condition
 
 __all__ = (
-	'DataAccessObjectFilterExists'
+	'Exists'
 )
 
 
-class DataAccessObjectFilterExists(DataAccessObjectFilterCondition):
+class Exists(Condition):
 	"""
 	Data Access Object Filter Exists Class for DocumentDB of AWS
 	"""

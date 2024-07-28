@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
-from ..DataAccessObjectFilterCondition import DataAccessObjectFilterCondition
+from ..Condition import Condition
 
 __all__ = (
-	'DataAccessObjectFilterRegex'
+	'Regex'
 )
 
 
-class DataAccessObjectFilterRegex(DataAccessObjectFilterCondition):
+class Regex(Condition):
 	"""
 	Data Access Object Filter Regex Class for DocumentDB of AWS
 	"""
